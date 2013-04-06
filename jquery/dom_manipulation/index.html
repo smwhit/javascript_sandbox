@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Appending content</title>
+	<style>
+	  article {
+	  	width: 600px;
+	  	margin: auto;
+	  }
+
+	  blockquote.co {
+	  	float:right;
+	  	background:#e3e3e3;
+	  	font-size:2em;
+	  	width: 35%;
+	  	text-align:center;
+	  }
+	</style>
+</head>
+<body>
+<article>
+	<h1>My awesome Post</h1>
+	<p>Lorem ipsum Nulla in nulla aliqua consectetur dolore tempor elit elit minim nulla in pariatur officia.</p>
+	<p><span class=co>My super heading </span>Lorem ipsum Duis adipisicing do qui.</p>
+	<p>Lorem ipsum Ut occaecat amet Excepteur incididunt qui labore consequat anim consequat occaecat magna voluptate culpa magna adipisicing exercitation mollit Ut consequat do ut aute ad nisi sunt elit quis voluptate culpa sunt mollit ut cupidatat ea Duis occaecat anim nostrud Excepteur.</p>
+	<p>Lorem ipsum Cupidatat Excepteur in occaecat pariatur enim esse elit sed ullamco quis tempor cupidatat est cupidatat non aliquip irure minim magna laboris et dolor fugiat nulla reprehenderit adipisicing Duis non ullamco nisi do enim consectetur in est consequat laborum labore veniam elit nulla dolor id Excepteur aliquip Ut velit Ut dolore esse anim nostrud aute eu consectetur nisi incididunt eu laboris tempor dolore aliqua ut sed velit ullamco minim ut cupidatat amet ad proident veniam non laboris elit eiusmod irure in dolor deserunt do nisi quis minim id culpa exercitation laboris Excepteur eu aliqua dolor dolor adipisicing aliqua est eiusmod laborum irure irure adipisicing incididunt laboris exercitation incididunt quis pariatur dolore laboris tempor laboris nisi dolor velit eu reprehenderit proident cupidatat sit nulla do enim aliquip sit occaecat amet ea Duis reprehenderit occaecat ullamco aliqua cupidatat sunt deserunt officia magna commodo laboris nisi ullamco sunt id.</p>
+
+</article>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+(function(){
+  var co = $('article').find('span.co').each(function() {
+    $this = $(this);
+
+    $('<blockquote></blockquote>', {
+      class: 'co',
+      text: $this.text()
+
+    }).prependTo($this.closest('p'));
+  });
+})();
+</script>
+</body>
+</html>
