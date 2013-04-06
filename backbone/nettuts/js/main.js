@@ -1,20 +1,26 @@
-var template = function(id) {
+(function(){
+  window.App = {
+    Models: {},
+    Collections: {},
+    Views: {}
+  };
+  window.template =  function(id) {
   return _.template($('#' + id).html() );
-};
+  };
 
-var Person = Backbone.Model.extend({
- defaults: {
-   name: 'John Doe',
-   age: 30,
-   occupation: 'worker'
+  App.Models.Person = Backbone.Model.extend({
+   defaults: {
+     name: 'John Doe',
+     age: 30,
+     occupation: 'worker'
  }
 });
 
-var PeopleCollection = Backbone.Collection.extend({
-    model: Person
+App.Collections.People = Backbone.Collection.extend({
+    model: App.Models.Person
 });
 
-var PersonView = Backbone.View.extend({
+App.Views.Person = Backbone.View.extend({
     tagName: 'li',
     template: template('personTemplate'),
 
@@ -24,21 +30,19 @@ var PersonView = Backbone.View.extend({
     }
 });
 
-var PeopleView = Backbone.View.extend({
+App.Views.People = Backbone.View.extend({
     tagName: 'ul',
 
     render: function() {
         this.collection.each(function(person){
-        var personView = new PersonView({ model: person});
+        var personView = new App.Views.Person({ model: person});
         this.$el.append(personView.render().el);
       }, this);
         return this;
     }
 });
 
-
-
-var peopleCollection = new PeopleCollection([
+peopleCollection = new App.Collections.People([
    {
      name: 'Simon',
      age: 21
@@ -54,6 +58,7 @@ var peopleCollection = new PeopleCollection([
      occupation: 'astronaut'
    }
   ]);
+})();
 
-var peopleView = new PeopleView({ collection: peopleCollection});
+var peopleView = new App.Views.People({ collection: peopleCollection});
 $(document.body).append(peopleView.render().el);
