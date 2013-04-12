@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>$.grep</title>
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+(function(){
+
+var arr = [
+	{
+		first: 'Simon',
+		last: 'Whittemore'
+	},
+	{
+		first: 'Jim',
+		last: 'Whittemore'
+	},
+	{
+		first: 'Jam',
+		last: 'Whittemore'
+	},
+	{
+		first: 'Simon',
+		last: 'X'
+	},
+	{
+		first: 'John',
+		last: 'X'
+	},
+	{
+		first: 'Ruben',
+		last: 'X'
+	},
+	];
+
+	arr = $.grep(arr, function(obj, index){
+		return obj.last === 'Whittemore';
+	});
+
+	console.log(arr);
+
+})();
+
+</script>
+</body>
+</html>
