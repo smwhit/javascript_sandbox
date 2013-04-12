@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Q&A</title>
+</head>
+<body>
+<script id="blogTemplate" type="tuts/template">
+  <h2> {{title}} </h2>
+  <img src={{thumbnail}} alt={{title}}>
+
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+(function(){
+	var content = [
+	{
+		title: "My blog post",
+		thumbnail: "http://tutsplus-media.s3.amazonaws.com/tutsplus.com/uploads/2013/03/modern-workflow-tools-100x100.jpg"
+	},
+	{
+		title: "My second post",
+		thumbnail: "http://tutsplus-media.s3.amazonaws.com/tutsplus.com/uploads/2013/03/modern-workflow-tools-100x100.jpg"
+	},
+	{
+		title: "My last post",
+		thumbnail: "http://tutsplus-media.s3.amazonaws.com/tutsplus.com/uploads/2013/03/modern-workflow-tools-100x100.jpg"
+	},
+	],
+	template = $.trim($('#blogTemplate').html()),
+	frag = '';
+
+
+	$.each(content, function(index, obj){
+		
+		frag += template.replace(/{{title}}/ig, obj.title)
+						.replace(/{{thumbnail}}/ig, obj.thumbnail);
+		console.log(frag);
+	});
+
+
+	$('body').append(frag);
+})();
+</script>
+</body>
+</html>
